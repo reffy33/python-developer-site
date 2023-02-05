@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+География
+{% endblock %}
+
+{% block content %}
+    <h1>География</h1>
+    <h2>Медианная зарплата по городам</h2>
+    <table>
+        <tr>
+            {% for el in sal_analitic %}
+                <td>{{ el.city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in sal_analitic %}
+                <td>{{ el.med_salary }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/area_analitic_salary.png' %}" alt="График зарплат по городам">
+    <h2>Количество вакансий по городам</h2>
+    <table>
+        <tr>
+            {% for el in vac_analitic %}
+                <td>{{ el.city }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in vac_analitic %}
+                <td>{{ el.vac_count }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/area_analitic_count.png' %}" alt="График количества вакансий по городам">
+{% endblock %}
+

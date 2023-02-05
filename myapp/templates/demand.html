@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Востребованность
+{% endblock %}
+
+{% block content %}
+    <h1>Востребованность</h1>
+    <h2>Медианная зарплата по годам</h2>
+    <table>
+        <tr>
+            {% for el in analitic %}
+            <td>{{ el.year }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in analitic %}
+            <td>{{ el.med_salary }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/year_analitic_salary.png'%}" alt="График изменения медианной зарплаты">
+
+    <h2>Количество вакансий по годам</h2>
+    <table>
+        <tr>
+            {% for el in analitic %}
+            <td>{{ el.year }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in analitic %}
+            <td>{{ el.vac_count }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/year_analitic_count.png'%}" alt="График изменения количества вакансий">
+
+    <h2>Медианная зарплата профессии Python-разработчик по годам </h2>
+    <table>
+        <tr>
+            {% for el in analitic %}
+                {% if el.med_salary_python > 0 %}
+                    <td>{{ el.year }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in analitic %}
+                {% if el.med_salary_python > 0 %}
+                    <td>{{ el.med_salary_python }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/python_year_analitic_salary.png'%}" alt="График изменения медианной зарплаты профессии Python-разработчик">
+
+    <h2>Количество вакансий профессии Python-разработчик по годам</h2>
+    <table >
+        <tr>
+            {% for el in analitic %}
+                {% if el.vac_count_python > 0 %}
+                    <td>{{ el.year }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for el in analitic %}
+                {% if el.vac_count_python > 0 %}
+                    <td>{{ el.vac_count_python }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </table>
+    <img src="{% static 'myapp/graphs/python_year_analitic_count.png'%}" alt="График изменения количества вакансий профессии Python-разработчик">
+{% endblock %}
+
