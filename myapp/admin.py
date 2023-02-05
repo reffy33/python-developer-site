@@ -1,3 +1,6 @@
 from django.contrib import admin
+from myapp.models import Demand, Geography
 
-# Register your models here.
+
+admin.site.register(Demand)
+admin.site.register(Geography)
