@@ -1,0 +1,27 @@
+.text-with-img {
+    display: flex;
+}
+
+.text-with-img img {
+    height: 270px;
+    margin-left:15px;
+}
+
+.content {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+p, li {
+    color: black;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 22px;
+}
