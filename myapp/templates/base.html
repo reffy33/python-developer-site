@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link type="image/x-icon" href="{% static 'myapp/favicon.ico' %}" rel="shortcut icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    {% block head %} {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles/style.css' %}">
+
+</head>
+<body>
+    <header>
+        <div class="header-logo-title">
+        <a href="/"><img src="{% static 'myapp/favicon.ico' %}" alt="logo" class="header-logo"></a>
+        <p class="header-title">Профессия Python-разработчик</p>
+        </div>
+        <nav>
+            <a href="/" class="navbar-link">Главная</a>
+            <a href="/demand" class="navbar-link">Востребованность</a>
+            <a href="/geography" class="navbar-link">География</a>
+            <!--<a href="/skills">Навыки</a>
+            <a href="/last-vacancies">Последние вакансии</a>-->
+        </nav>
+    </header>
+    <hr>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <hr>
+    <footer>
+        <span class="footer-text">Дмитрий Гагарин / АТ-15 / РИ-210950</span>
+    </footer>
+</body>
+</html>
