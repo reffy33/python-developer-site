@@ -101,15 +101,14 @@ def main():
     df['year'] = df['published_at'].str[:4]
     df = df.drop(columns=['published_at'])
 
-    # year_analitic = demand_analitic(df)
-
     connection = sqlite3.connect('../db.sqlite3')
     cur = connection.cursor()
 
-    # year_analitic.to_sql(con=connection, name='myapp_demand', if_exists="append")
+    year_analitic = demand_analitic(df)
+    year_analitic.to_sql(con=connection, name='myapp_demand', if_exists="append")
 
     area_analitic = geograpy_analitic(df)
-    # area_analitic.to_sql(con=connection, name='myapp_geography', if_exists="append")
+    area_analitic.to_sql(con=connection, name='myapp_geography', if_exists="append")
 
 
 if __name__ == "__main__":
