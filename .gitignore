@@ -5,6 +5,8 @@
 __pycache__
 media
 
+src/csv 
+
 # Backup files # 
 *.bak 
 
