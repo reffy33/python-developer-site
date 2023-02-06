@@ -33,7 +33,7 @@ class DemandAnalitic():
 
 
     def __med_salary__(self, df, prefix=False):
-        med_salary = self._get_analitic__(df, "median")
+        med_salary = self.__get_analitic__(df, "median")
         if prefix:
             new_name = f'med_salary_{self.prefix}'
         else:

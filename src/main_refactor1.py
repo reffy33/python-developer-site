@@ -14,6 +14,7 @@ demand = DemandAnalitic(df, key_words)
 connection = sqlite3.connect('db.sqlite3')
 cur = connection.cursor()
 demand.move_to_sql(connection, 'myapp_demand')
+connection.close()
 print("Moved to SQL")
 
 demand.save_graphs('myapp/static/graphs/demand/')
