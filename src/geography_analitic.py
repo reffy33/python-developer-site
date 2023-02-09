@@ -1,7 +1,4 @@
 import matplotlib.pyplot as plt
-import pandas as pd
-import sqlite3
-
 
 class GeographyAnalitic():
     def __init__(self, df, key_words) -> None:
@@ -42,7 +39,9 @@ class GeographyAnalitic():
 
     def __vac_count__ (self, df):
         vac_count = self.__get_analitic__(df, "count")
-        return vac_count.rename(columns={"salary": 'vac_count'})
+        vac_count = vac_count.rename(columns={"salary": 'vac_count'})
+        vac_count.sort_values(by=["vac_count"], inplace=True, ascending=False)
+        return vac_count.head(10)
 
     
     def __top_10_cityes__(self, df):
@@ -65,27 +64,14 @@ class GeographyAnalitic():
         if traslate:
             self.rename_all()
         
-        
-        self.save_graph(self.med_salary, path + 'area_analitic_salary.png')
-        self.save_graph(self.vac_count, path + 'area_analitic_count.png')
+        self.__save_graph__(self.med_salary, path + 'area_analitic_salary.png')
+        self.__save_graph__(self.vac_count, path + 'area_analitic_count.png')
     
 
-    def save_graph(self, df, full_path):
+    def __save_graph__(self, df, full_path):
         df.plot()
         plt.savefig(full_path)
 
 
     def move_to_sql(self, con, table_name):
         self.joined.to_sql(con=con, name=table_name, if_exists="append")
-
-
-df = pd.read_csv('src/csv/converted_salary.csv')
-df['year'] = df['published_at'].str[:4]
-df = df.drop(columns=['published_at'])
-
-key_words = ["python", "питон", "пайтон"]
-
-geo = GeographyAnalitic(df, key_words)
-
-geo.save_graphs('myapp/static/graphs/geography/')
-print("Graphs saved")
