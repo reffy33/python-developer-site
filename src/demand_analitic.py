@@ -67,14 +67,14 @@ class DemandAnalitic():
         if traslate:
             self.rename_all()
         
-        self.save_graph(self.med_salary, path + 'year_analitic_salary.png')
-        self.save_graph(self.vac_count, path + 'year_analitic_count.png')
+        self.__save_graph__(self.med_salary, path + 'year_analitic_salary.png')
+        self.__save_graph__(self.vac_count, path + 'year_analitic_count.png')
 
-        self.save_graph(self.med_salary_prof, path + f'{self.prefix}_year_analitic_salary.png')
-        self.save_graph(self.vac_count_prof, path + f'{self.prefix}_year_analitic_count.png')
+        self.__save_graph__(self.med_salary_prof, path + f'{self.prefix}_year_analitic_salary.png')
+        self.__save_graph__(self.vac_count_prof, path + f'{self.prefix}_year_analitic_count.png')
     
 
-    def save_graph(self, df, full_path):
+    def __save_graph__(self, df, full_path):
         df.plot()
         plt.savefig(full_path)
 
