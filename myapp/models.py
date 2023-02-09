@@ -9,7 +9,7 @@ class Demand(models.Model):
     vac_count_python = models.IntegerField("Количество вакансий по выбранной профессии", null=True)
 
     def __str__(self):
-        return self.year
+        return str(self.year)
 
     class Meta:
         verbose_name = "Востребованность"
@@ -22,7 +22,7 @@ class Geography(models.Model):
     vac_count = models.IntegerField("Количество вакансий")
 
     def __str__(self):
-        return self.city
+        return str(self.city)
 
     class Meta:
         verbose_name = "География"
