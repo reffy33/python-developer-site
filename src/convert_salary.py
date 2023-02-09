@@ -49,7 +49,9 @@ def convert_salary(input_file, cur_history_file):
 
 
 def main():
-    convert_salary('csv/vacancies_dif_currencies.csv', 'csv/currensies_history.csv')
+    df = convert_salary('src/csv/vacancies_dif_currencies.csv', 'src/csv/currensies_history.csv')
+    df.to_csv('src/csv/converted_salary.csv')
+    print('CSV file created!')
 
 
 if __name__ == '__main__':
