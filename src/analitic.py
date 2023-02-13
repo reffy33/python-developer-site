@@ -5,8 +5,13 @@ from demand_analitic import DemandAnalitic
 from geography_analitic import GeographyAnalitic
 
 
-def main():
-    df = pd.read_csv('src/csv/converted_salary.csv')
+def main(default=False):
+    if default:
+        path = 'src/csv/converted_salary.csv'
+    else:
+        path = input()
+    
+    df = pd.read_csv(path)        
     df['year'] = df['published_at'].str[:4]
     df = df.drop(columns=['published_at'])
 
@@ -18,8 +23,8 @@ def main():
     connection = sqlite3.connect('db.sqlite3')
     
     cur = connection.cursor()
-    cur.execute('DELETE FORM myapp_demand')
-    cur.execute('DELETE FORM myapp_geography')
+    cur.execute('DELETE FROM myapp_demand')
+    cur.execute('DELETE FROM myapp_geography')
     connection.commit()
 
     demand.move_to_sql(connection, 'myapp_demand')
