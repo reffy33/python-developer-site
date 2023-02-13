@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class DemandAnalitic():
     """
-    Represents a pandas dataframe for Demand analitics
+    Represents a pandas dataframe for demand analitics
     """
     def __init__(self, df, key_words, prefix="python") -> None:
         prof_df = self.__get_profession_df__(df, key_words)
@@ -97,6 +97,7 @@ class DemandAnalitic():
 
         self.vac_count = self.__rename_to_rus__(self.vac_count, {'vac_count': "Количество вакансий"})
         self.vac_count_prof = self.__rename_to_rus__(self.vac_count_prof, {f'vac_count_{self.prefix}': "Количество вакансий"})
+
 
     def __save_graph__(self, df, full_path):
         """
