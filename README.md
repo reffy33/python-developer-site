@@ -1,4 +1,8 @@
 # Сайт на Django о профессии Python-разработчика
+## Stack
+- Python
+- Django
+- Pandas
 
 ## Installation guide
 ### Clone the git repository
